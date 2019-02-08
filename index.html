@@ -3,18 +3,26 @@
 	<head>
 
 		<title>API Practice</title>
-		<link rel="stylesheet" href="css/base.css">
 
 	</head>
 	<body>
 
-		<!-- HTML -->
-		<h2>Hi</h2>
+        <!-- Gallery HTML -->
+        <div id="addForm">
+            <form role="form" id="form-container">
+                <h2>Pokemon Data</h2>
+                <label for="numField"><b>Number</b></label>
+                <input id="numField" type="text" placeholder="Enter the Pokemon's number">
+                <div id="buttons">
+                    <button id="searchBtn" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
 
-		<div id="stats"></div>
+		<ul id="pokemon"></ul>
 
 		<!-- Javascript -->
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="index.js"></script>
 
 	</body>
 </html>
