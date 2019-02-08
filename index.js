@@ -1,3 +1,4 @@
+//function used to create a node of type element
 function createNode(element)
 {
 	return document.createElement(element);
@@ -9,13 +10,19 @@ function append(parent,el)
 	return parent.appendChild(el);
 }
 
+// our constant that will save the list that we will load
+// data into
 const ul = document.getElementById("pokemon");
 
+// our event listener'
+// will capture our entered info and display it on the page
+// will call the pokemon api and display what is entered
+// --MORE INFO WILL BE ADDED--
 document.getElementById('searchBtn').addEventListener('click', function (e) {
     e.preventDefault();
-    let userNum = document.getElementById('numField').value;
+    let userSearch = document.getElementById('searchField').value;
     ul.innerHTML = "";
-    fetch("http://pokeapi.salestock.net/api/v2/pokemon/" + userNum + "/")
+    fetch("http://pokeapi.salestock.net/api/v2/pokemon/" + userSearch + "/")
         .then(resp => resp.json())
         .then(function (data) {
             //change the header to the Pokemon chosen
