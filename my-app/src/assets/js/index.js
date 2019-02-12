@@ -14,7 +14,7 @@ function append(parent,el)
 // data into
 const ul = document.getElementById("pokemon");
 
-// our event listener'
+// our event listener
 // will capture our entered info and display it on the page
 // will call the pokemon api and display what is entered
 // --MORE INFO WILL BE ADDED--
@@ -22,6 +22,7 @@ document.getElementById('searchBtn').addEventListener('click', function (e) {
     e.preventDefault();
     let userSearch = document.getElementById('searchField').value;
     ul.innerHTML = "";
+    document.querySelector('body h2').innerHTML = "Loading..."
     fetch("http://pokeapi.salestock.net/api/v2/pokemon/" + userSearch + "/")
         .then(resp => resp.json())
         .then(function (data) {
@@ -31,9 +32,6 @@ document.getElementById('searchBtn').addEventListener('click', function (e) {
             let li = createNode('li'),
                 img = createNode('img'),
                 img2 = createNode('img'),
-                img3 = createNode('img'),
-                img4 = createNode('img'),
-                h3 = createNode('h3');
             p = createNode('p');
             p2 = createNode('p');
             p3 = createNode('p');
@@ -57,31 +55,21 @@ document.getElementById('searchBtn').addEventListener('click', function (e) {
 
             //set the first sprite image
             img.src = data.sprites.front_default;
-            //set the second sprite image
-            img3.src = data.sprites.back_default;
             //third sprite image
             img2.src = data.sprites.front_shiny;
-            //fourth sprite image
-            img4.src = data.sprites.back_shiny;
             //update the html for headers
             p.innerHTML = "Normal Sprite";
             p2.innerHTML = "Shiny Sprite";
             p3.innerHTML = "Information";
             //add the types into the html
             type.innerHTML = "Type: " + typeInfo + "<br />";
-            //populate the information with labels
-            h3.innerHTML = "Height: " + data.height + "&emsp;Weight: " + data.weight + "&emsp;BaseXP: " + data.base_experience;
 
             //append all the elements to the list
             append(li, type);
             append(li, p);
             append(li, img);
-            append(li, img3);
             append(li, p2);
             append(li, img2);
-            append(li, img4);
-            append(li, p3);
-            append(li, h3);
             append(ul, li);
         })
         //catch any errors the code runs into
@@ -90,4 +78,8 @@ document.getElementById('searchBtn').addEventListener('click', function (e) {
             console.log(error);
         }
         );
+})
+
+document.getElementById('moreInfoBtn').addEventListener('click', function(e) {
+    e.preventDefault();
 })
