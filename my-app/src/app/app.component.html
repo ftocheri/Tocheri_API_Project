@@ -8,24 +8,24 @@
 	<body>
 
         <!-- Gallery HTML -->
-        <div class="container" id="addForm">
-            <form role="form" id="form-container">
-                <h2 class="text-center text-primary">Pokemon Data</h2>
+        <div class="container text-center" id="addForm">
+            <form role="form" class="jumbotron" id="form-container">
+                <h2 class="text-center">Pokemon Database</h2>
                 <div class="input-group-prepend">
-                  <label for="searchField"><b>Name</b></label>
                   <input id="searchField" type="text" #pokemon placeholder="Enter the Pokemon's name or number" ngModel>
                 </div>
-                <div id="buttons">
-                  <span class="input-group-text" (click)="addPoke(pokemon.value)">Catch 'Em</span>
-                  <span class="input-group-text" (click)="randPoke()">Random</span>
+                <div class="btn-group" id="buttons">
+                  <span id="searchBtn" class="input-group-text" (click)="addPoke(pokemon.value)">Catch 'Em</span>
+                  <span id="randBtn" class="input-group-text" (click)="randPoke()">Random</span>
                 </div>
             </form>
         </div>
 
-		<ul id="pokemon"></ul>
-    <span class="input-group-text" id="moreInfo" (click)="moreInfo(pokemon.value)">More Info</span>
-		<!-- Javascript -->
-		<script type="text/javascript" src="index.js"></script>
+    <div class="container">
+      <h2 id="titleName"></h2>
+      <ul class="list-inline" id="pokemon"></ul>
+      <span class="input-group-text" id="moreInfo" (click)="moreInfo(pokemon.value)">More Info</span>
+    </div>
 
 	</body>
 </html>

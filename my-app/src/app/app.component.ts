@@ -7,7 +7,7 @@ import { getQueryValue } from '@angular/core/src/view/query';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   public pokemon: String;
 
   addPoke(value) {
@@ -76,10 +76,11 @@ export class AppComponent {
       .then(resp => resp.json())
       .then(function (data) {
         //change the header to the Pokemon chosen
-        document.querySelector('body h2').innerHTML = `${data.name} #${data.id}`;
+        document.querySelector('body h2').innerHTML = "Pokemon Database";
         let value = <HTMLInputElement>document.getElementById('searchField')
         value.value = data.name;
         //create nodes for each of our created info
+        let h2 = document.createElement('h2');
         let li = document.createElement('li');
         let img = document.createElement('img');
         let img2 = document.createElement('img');
@@ -104,6 +105,8 @@ export class AppComponent {
 
         //set the data to our pulled information
 
+        h2.innerHTML = `${data.name} #${data.id}`;
+        document.getElementById('titleName').appendChild(h2);
         //set the first sprite image
         img.src = data.sprites.front_default;
         //third sprite image

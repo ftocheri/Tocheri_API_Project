@@ -1,10 +1,28 @@
-body{
+@import url("https://use.typekit.net/zqw3izn.css");
+body {
+    font-family: 'griffith-gothic-condensed', sans-serif !important;
+    font-weight: 700;
+    font-style: normal;
     padding: 20px;
     margin: 0;
+    background-color: #d5d8e5 !important;
+    color: #5a5353 !important;
 }
 form {
-    max-width: 25em;
+    max-width: 50em;
     margin: 1em auto;
+}
+.jumbotron {
+    background-color: #ADBAF5 !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+}
+#form-container h2 {
+    margin-bottom: 50px;
+}
+#searchField {
+    width: 75%;
+    margin: 0 auto;
 }
 ul {
     list-style: none;
@@ -13,15 +31,54 @@ li {
     margin: 1em auto;
     max-width: 50em;
 }
+#titleName {
+    text-align: center;
+    display: block;
+}
 #moreInfo {
     max-width: 25em;
     margin: 1em auto;
     visibility: hidden;
+    background-color: #ADBAF5 !important;
+    border: none;
+    cursor: pointer;
 }
 img {
-    min-width: 80px;
+    min-width: 200px;
+    background-color: #ADBAF5;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+    float: left;
 }
-
+.list-inline {
+    display: flex;
+    justify-content: center;
+}
+.list-inline p {
+    text-align: center;
+    padding-top: 20px !important;
+    margin-bottom: -5px !important;
+}
+.list-inline h4 {
+    text-align: center;
+}
+.input-group-text {
+    width: 200px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 20px;
+    justify-content: center;
+    background-color: #d5d8e5 !important;
+    border-radius: 20px !important;
+    box-shadow: 2px 2px;
+}
+#searchBtn {
+    cursor: pointer;
+}
+#randBtn {
+    cursor: pointer;
+}
 section {
 	position: relative;
 	max-width: 1000px;
