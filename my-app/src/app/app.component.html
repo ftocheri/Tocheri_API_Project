@@ -15,17 +15,17 @@
                   <input id="searchField" type="text" #pokemon placeholder="Enter the Pokemon's name or number" ngModel>
                 </div>
                 <div class="btn-group" id="buttons">
-                  <span id="searchBtn" class="input-group-text" (click)="addPoke(pokemon.value)">Catch 'Em</span>
-                  <span id="randBtn" class="input-group-text" (click)="randPoke()">Random</span>
+                  <button id="searchBtn" class="input-group-text" (click)="addPoke(pokemon.value)">Catch 'Em</button>
+                  <button id="randBtn" class="input-group-text" (click)="randPoke()">Random</button>
                 </div>
             </form>
         </div>
 
-    <div class="container">
+    <div id="info_container">
       <h2 id="titleName"></h2>
-      <ul class="list-inline" id="pokemon"></ul>
-      <span class="input-group-text" id="moreInfo" (click)="moreInfo(pokemon.value)">More Info</span>
+      <div class="list-inline container" id="pokemon"></div>
     </div>
+    <button class="input-group-text" id="moreInfo" (click)="moreInfo(pokemon.value)">More Info</button>
 
 	</body>
 </html>

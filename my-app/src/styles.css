@@ -34,6 +34,7 @@ li {
 #titleName {
     text-align: center;
     display: block;
+    text-transform: capitalize;
 }
 #moreInfo {
     max-width: 25em;
@@ -43,6 +44,18 @@ li {
     border: none;
     cursor: pointer;
 }
+.img_div {
+    position: relative;
+}
+.img_txt {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ADBAF5;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 img {
     min-width: 200px;
     background-color: #ADBAF5;
@@ -50,6 +63,11 @@ img {
     margin: 5px;
     border-radius: 20px;
     float: left;
+}
+.lrg_image {
+    min-width: 300px;
+    min-height: 300px;
+    display: block;
 }
 .list-inline {
     display: flex;
