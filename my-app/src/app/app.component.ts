@@ -178,45 +178,96 @@ export class AppComponent {
 
   moreInfo(pokemon) {
     event.preventDefault();
-    let ul = document.getElementById("pokemon");
-    ul.innerHTML = "";
+    document.getElementById('moreInfo').style.visibility = 'hidden';
+    document.getElementById('pokemon').innerHTML = "";
     document.querySelector('body h2').innerHTML = "Loading..."
     fetch("http://pokeapi.salestock.net/api/v2/pokemon/" + pokemon + "/")
-      .then(resp => resp.json())
-      .then(function (data) {
-        document.querySelector('body h2').innerHTML = "";
-        let h1 = document.createElement('h1');
-        let h2 = document.createElement('h2');
-        let li = document.createElement('li');
-        let img = document.createElement('img');
-        let img2 = document.createElement('img');
-        let img3 = document.createElement('img');
-        let img4 = document.createElement('img');
-        let p = document.createElement('p');
-        let p2 = document.createElement('p');
-        let p3 = document.createElement('p');
-        let p4 = document.createElement('p');
+    .then(resp => resp.json())
+    .then(function (data) {
+      //change the header to the Pokemon chosen
+      document.querySelector('body h2').innerHTML = "Pokemon Database";
+      let value = <HTMLInputElement>document.getElementById('searchField')
+      value.value = data.name;
+      //create nodes for each of our created info
+      let div = document.getElementById('pokemon');
+      let img = document.createElement('img');
+      let img2 = document.createElement('img');
+      let img3 = document.createElement('img');
+      let img4 = document.createElement('img');
+      let p = document.createElement('p');
+      let p2 = document.createElement('p');
+      let p3 = document.createElement('p');
+      let p4 = document.createElement('p');
+      let type = document.createElement('h4');
 
+      let details = document.createElement('div');
+      details.setAttribute('class','details');
+      let dTitle = document.createElement('h4');
+      dTitle.setAttribute('class', 'd_title');
+      let dText = document.createElement('p');
+      dText.setAttribute('class', 'd_text');
 
-        img.src = data.sprites.front_default;
-        p.innerHTML = "Normal";
-        img2.src = data.sprites.back_default;
-        p2.innerHTML = "Normal - Back";
-        img3.src = data.sprites.front_shiny;
-        p3.innerHTML = "Shiny";
-        img4.src = data.sprites.back_shiny;
-        p4.innerHTML = "Shiny - Back";
+      let div2 = document.createElement('div');
+      div2.setAttribute('class', 'sml_img_div');
+      let div3 = document.createElement('div');
+      div3.setAttribute('class', 'sml_img_div');
+      let div4 = document.createElement('div');
+      div4.setAttribute('class', 'sml_img_div');
+      let div5 = document.createElement('div');
+      div5.setAttribute('class', 'sml_img_div');
 
-        h2.innerHTML = "Details";
+      img.setAttribute('class', 'sml_image');
+      img2.setAttribute('class', 'sml_image');
+      img3.setAttribute('class', 'sml_image');
+      img4.setAttribute('class', 'sml_image');
+      p.setAttribute('class', 'img_txt');
+      p2.setAttribute('class', 'img_txt');
+      p3.setAttribute('class', 'img_txt');
+      p4.setAttribute('class', 'img_txt');
+      type.setAttribute('class','type');
 
-        li.appendChild(h1);
-        li.appendChild(h2);
-        li.appendChild(img);
-        li.appendChild(img2);
-        li.appendChild(img3);
-        li.appendChild(img4);
+      //create a variable that will save our HTML information
+      //created because some Pokemon have multiple types
+      var typeInfo = '';
+      //check if the Pokemon selected has multiple types
+      for (var i = 0; i < data.types.length; i++) {
+        //format accordingly
+        if (data.types.length > 1 && i == 0) {
+          typeInfo += data.types[i].type.name + "/";
+        }
+        else {
+          typeInfo += data.types[i].type.name;
+        }
+      }
 
-        ul.appendChild(li);
+      //set the data to our pulled information
+      //set the sprite images
+      img.src = data.sprites.front_default;
+      img2.src = data.sprites.front_shiny;
+      img3.src = data.sprites.back_default;
+      img4.src = data.sprites.back_shiny;
+      //update the html for headers
+      p.innerHTML = "Normal Sprite";
+      p2.innerHTML = "Shiny Sprite";
+      p3.innerHTML = "Normal Sprite - Back";
+      p4.innerHTML = "Shiny Sprite - Back";
+      //add the types into the html
+      type.innerHTML = "Type: " + typeInfo + "<br />";
+
+      //append all the elements to the list
+      div2.appendChild(p);
+      div2.appendChild(img);
+      div3.appendChild(p2);
+      div3.appendChild(img2);
+      div4.appendChild(p3);
+      div4.appendChild(img3);
+      div5.appendChild(p4);
+      div5.appendChild(img4);
+      div.appendChild(div2);
+      div.appendChild(div3);
+      div.appendChild(div4);
+      div.appendChild(div5);
+      div.appendChild(type);
       })
   }
 }

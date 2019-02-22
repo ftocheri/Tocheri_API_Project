@@ -50,6 +50,10 @@ form {
     float: right;
     margin-left: 200px;
 }
+.sml_img_div {
+    float: left;
+    position: relative;
+}
 .img_txt {
     position: absolute;
     bottom: 20px;
@@ -76,6 +80,12 @@ img {
     min-width: 300px;
     display: block;
     margin-top: -50px;
+}
+.sml_image {
+    min-width: 200px;
+    display: block;
+    margin: 10px;
+    margin-top: 50px;
 }
 .list-inline {
     display: flex;
