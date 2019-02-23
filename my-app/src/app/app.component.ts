@@ -201,11 +201,17 @@ export class AppComponent {
       let type = document.createElement('h4');
 
       let details = document.createElement('div');
-      details.setAttribute('class','details');
-      let dTitle = document.createElement('h4');
-      dTitle.setAttribute('class', 'd_title');
-      let dText = document.createElement('p');
-      dText.setAttribute('class', 'd_text');
+      details.className = 'details jumbotron';
+
+      let detailsHTML = '';
+      detailsHTML += "<h2 class='d_header'>Details</h2>";
+      detailsHTML += "<br>";
+      detailsHTML += "<h4>Height: " + data.height + " Weight: " +  data.weight + " BaseXP: " + data.base_experience + "<br>";
+      detailsHTML += "<p>HP: " + data.stats[5].base_stat;
+      detailsHTML += " Attack: " + data.stats[4].base_stat;
+      detailsHTML += " Defence: " + data.stats[3].base_stat;
+      detailsHTML += " Speed: " + data.stats[0].base_stat + "</p>";
+      details.innerHTML = detailsHTML;
 
       let div2 = document.createElement('div');
       div2.setAttribute('class', 'sml_img_div');
@@ -228,9 +234,9 @@ export class AppComponent {
 
       //create a variable that will save our HTML information
       //created because some Pokemon have multiple types
-      var typeInfo = '';
+      let typeInfo = '';
       //check if the Pokemon selected has multiple types
-      for (var i = 0; i < data.types.length; i++) {
+      for (let i = 0; i < data.types.length; i++) {
         //format accordingly
         if (data.types.length > 1 && i == 0) {
           typeInfo += data.types[i].type.name + "/";
@@ -268,6 +274,7 @@ export class AppComponent {
       div.appendChild(div4);
       div.appendChild(div5);
       div.appendChild(type);
+      div.appendChild(details);
       })
   }
 }
