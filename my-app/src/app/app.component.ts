@@ -90,6 +90,14 @@ export class AppComponent {
       div.appendChild(div3);
       div.appendChild(type);
       })
+      .catch(function(error) {
+        console.log(error);
+        window.alert('Pokemon does not exist\nTry Again');
+        document.getElementById('titleName').innerHTML = "";
+        document.getElementById('pokemon').innerHTML = "";
+        document.querySelector('body h2').innerHTML = "Pokemon Database";
+        document.getElementById('moreInfo').style.visibility = 'hidden';
+      })
       document.getElementById('moreInfo').style.visibility = 'visible';
   }
 
@@ -172,6 +180,14 @@ export class AppComponent {
         div.appendChild(div2);
         div.appendChild(div3);
         div.appendChild(type);
+      })
+      .catch(function(error) {
+        console.log(error);
+        window.alert('Pokemon does not exist\nTry Again');
+        document.getElementById('titleName').innerHTML = "";
+        document.getElementById('pokemon').innerHTML = "";
+        document.querySelector('body h2').innerHTML = "Pokemon Database";
+        document.getElementById('moreInfo').style.visibility = 'hidden';
       })
       document.getElementById('moreInfo').style.visibility = 'visible';
   }
@@ -275,6 +291,14 @@ export class AppComponent {
       div.appendChild(div5);
       div.appendChild(type);
       div.appendChild(details);
+      })
+      .catch(function(error) {
+        console.log(error);
+        window.alert('Pokemon does not exist.\nTry again.');
+        document.getElementById('titleName').innerHTML = "";
+        document.getElementById('pokemon').innerHTML = "";
+        document.querySelector('body h2').innerHTML = "Pokemon Database";
+        document.getElementById('moreInfo').style.visibility = 'hidden';
       })
   }
 }
