@@ -1,4 +1,5 @@
 @import url("https://use.typekit.net/zqw3izn.css");
+/* Base formatting for our page */
 body {
     font-family: 'griffith-gothic-condensed', sans-serif !important;
     font-weight: 700;
@@ -8,10 +9,12 @@ body {
     background-color: #d5d8e5 !important;
     color: #5a5353 !important;
 }
+/* format the form with a max width and center on page */
 form {
     max-width: 50em;
     margin: 1em auto;
 }
+/* reformat some aspects of bootstraps jumbotron class */
 .jumbotron {
     background-color: #ADBAF5 !important;
     border-radius: 20px !important;
@@ -20,23 +23,32 @@ form {
     text-align: center;
     justify-content: center;
 }
+/* Give a little space to our header inside the form */
 #form-container h2 {
     margin-bottom: 20px;
 }
+/* format for our search field for size and centering */
 #searchField {
     width: 75%;
     margin: 0 auto;
     border-radius: 10px;
     padding-left: 5px;
 }
+/* center our title and make sure it displays on its own line
+    also capitalize the word */
 #titleName {
     text-align: center;
     display: block;
     text-transform: capitalize;
 }
+/* resize our paragraph names */
 .p_name {
     font-size: 3rem;
 }
+/* formatting for our more info button
+    center and size set
+        value is hidden until changed with JS
+            change the pointer on hover */
 #moreInfo {
     max-width: 25em;
     margin: 1em auto;
@@ -45,18 +57,23 @@ form {
     border: none;
     cursor: pointer;
 }
+/* make sure our images are centered and in a line */
 .img_div {
     position: relative;
     float: left;
 }
+/* float the other image right and give it a little margin to center */
 .img_div:nth-of-type(2) {
     float: right;
     margin-left: 200px;
 }
+/* same thing for our smaller images
+    some other aspects will change */
 .sml_img_div {
     float: left;
     position: relative;
 }
+/* display the image label is over the image and in the lower corner */
 .img_txt {
     position: absolute;
     bottom: 20px;
@@ -66,12 +83,15 @@ form {
     padding-right: 10px;
     padding-top: -10px;
 }
+/* format our type paragraph to be in the center of the page */
 .type {
     text-align: center;
     position: absolute;
     padding: 10px;
     margin-top: -10px;
 }
+/* resize the base image and give it a background
+    make sure the image is in a line with a shadow */
 img {
     min-width: 200px;
     background-color: #ADBAF5;
@@ -81,29 +101,38 @@ img {
     float: left;
     box-shadow: 5px 5px;
 }
+/* base settings for our larger images
+    slight margin taken off top to better orient images */
 .lrg_image {
     min-width: 300px;
     display: block;
     margin-top: -50px;
 }
+/* base settings for our smaller images */
 .sml_image {
     min-width: 200px;
     display: block;
     margin: 10px;
     margin-top: 40px;
 }
+/* format for our details box */
 .list-inline {
     display: flex;
     justify-content: center;
 }
+/* format the paragraphs inside of the details box */
 .list-inline p {
     text-align: center;
     padding-top: 20px !important;
     margin-bottom: -5px !important;
 }
+/* center the title of the details box */
 .list-inline h4 {
     text-align: center;
 }
+/* format style for the buttons
+    center and set sizes
+        shadow and rounded corners */
 .input-group-text {
     width: 200px;
     height: 50px;
@@ -114,6 +143,9 @@ img {
     border-radius: 20px !important;
     box-shadow: 2px 2px;
 }
+/* another style for when we shrink the search form
+    buttons will change to this style when prompted
+        smaller buttons, but same orientation */
 .input-group-text.smaller {
     width: 150px;
     height: 40px;
@@ -124,12 +156,14 @@ img {
     border-radius: 20px !important;
     box-shadow: 2px 2px;
 }
+/* change the hover pointer for both buttons */
 #searchBtn {
     cursor: pointer;
 }
 #randBtn {
     cursor: pointer;
 }
+/* center the details and hard-set the size of the box */
 .details {
     display: flex;
     text-align: center;
@@ -139,11 +173,13 @@ img {
     min-width: 40em !important;
     min-height: 7em;
 }
+/* center the h4 aspect of the details field */
 .details h4{
     bottom: 0px;
     margin-top: 60px;
     text-align: center;
 }
+/* center and decorate the details title */
 .d_header {
     text-align: center;
     position: absolute;

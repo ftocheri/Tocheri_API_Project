@@ -8,26 +8,38 @@ import { getQueryValue } from '@angular/core/src/view/query';
 })
 export class AppComponent {
 
+  // declare a public variable to hold user entry
   public pokemon: String;
 
+  // first on-click for the search function
   addPoke(value) {
     event.preventDefault();
+    // convert the user entry to lowercase
     this.pokemon = value.toLowerCase();
+    // clear the html fields to to reset the page
     document.getElementById('titleName').innerHTML = "";
     document.getElementById('pokemon').innerHTML = "";
+    // show a loading screen for smoother transitions
     document.querySelector('body h2').innerHTML = "Loading...";
+    // resize the search field for better UI
     document.querySelector('h2').style.marginBottom = "20px";
     document.querySelector('form').style.maxWidth = '30em';
     document.querySelector('form').style.maxHeight = '20em';
+    // save a variable for the buttons
     let btnCSS = document.getElementsByClassName('input-group-text');
+    // resize each button for better UI
     for(let i = 0, il = btnCSS.length; i<il; i++) {
       btnCSS[i].className += ' smaller';
     }
+    // fetch call for our API
     fetch("http://pokeapi.salestock.net/api/v2/pokemon/" + this.pokemon + "/")
+    // convert the response to JSON
     .then(resp => resp.json())
+    // create a function with our data
     .then(function (data) {
-      //change the header to the Pokemon chosen
+      //change the header
       document.querySelector('body h2').innerHTML = "Pokemon Database";
+      // load the value of the pokemon's name into the search field
       let value = <HTMLInputElement>document.getElementById('searchField')
       value.value = data.name;
       //create nodes for each of our created info
@@ -40,11 +52,13 @@ export class AppComponent {
       let p3 = document.createElement('p');
       let type = document.createElement('h4');
 
+      // give some of our created fields a class for CSS
       let div2 = document.createElement('div');
       div2.setAttribute('class', 'img_div');
       let div3 = document.createElement('div');
       div3.setAttribute('class', 'img_div');
 
+      // continue setting classes
       img.setAttribute('class', 'lrg_image');
       img2.setAttribute('class', 'lrg_image');
       h2.setAttribute('class', 'p_name');
@@ -67,12 +81,11 @@ export class AppComponent {
       }
 
       //set the data to our pulled information
-
       h2.innerHTML = `${data.name} </br> #${data.id}`;
       document.getElementById('titleName').appendChild(h2);
       //set the first sprite image
       img.src = data.sprites.front_default;
-      //third sprite image
+      //second sprite image
       img2.src = data.sprites.front_shiny;
       //update the html for headers
       p.innerHTML = "Normal Sprite";
@@ -90,6 +103,8 @@ export class AppComponent {
       div.appendChild(div3);
       div.appendChild(type);
       })
+      // catch errors and reset the field
+      // also give the user some feedback
       .catch(function(error) {
         console.log(error);
         window.alert('Pokemon does not exist\nTry Again');
@@ -98,11 +113,15 @@ export class AppComponent {
         document.querySelector('body h2').innerHTML = "Pokemon Database";
         document.getElementById('moreInfo').style.visibility = 'hidden';
       })
+      // finally, make the more info button visible
       document.getElementById('moreInfo').style.visibility = 'visible';
   }
 
+  // same function as above, but for the random button
+  // this will generate a random number and display that pokemon's information
   randPoke() {
     event.preventDefault();
+    // create a random number and assign that to the pokemon value
     this.pokemon = (Math.floor(Math.random() * Math.floor(721)) + 1).toString();
     document.getElementById('titleName').innerHTML = "";
     document.getElementById('pokemon').innerHTML = "";
@@ -117,7 +136,7 @@ export class AppComponent {
     fetch("http://pokeapi.salestock.net/api/v2/pokemon/" + this.pokemon + "/")
       .then(resp => resp.json())
       .then(function (data) {
-        //change the header to the Pokemon chosen
+        //change the header
         document.querySelector('body h2').innerHTML = "Pokemon Database";
         let value = <HTMLInputElement>document.getElementById('searchField')
         value.value = data.name;
@@ -163,7 +182,7 @@ export class AppComponent {
         document.getElementById('titleName').appendChild(h2);
         //set the first sprite image
         img.src = data.sprites.front_default;
-        //third sprite image
+        //second sprite image
         img2.src = data.sprites.front_shiny;
         //update the html for headers
         p.innerHTML = "Normal Sprite";
@@ -192,15 +211,21 @@ export class AppComponent {
       document.getElementById('moreInfo').style.visibility = 'visible';
   }
 
+  // function assigned to the more info button
+  // will load a new screen that will display more information about selected pokemon
   moreInfo(pokemon) {
     event.preventDefault();
+    // hide our more info button to prevent errors
     document.getElementById('moreInfo').style.visibility = 'hidden';
+    // clear fields and add a loading message
     document.getElementById('pokemon').innerHTML = "";
     document.querySelector('body h2').innerHTML = "Loading..."
+    // new fetch with the user's pokemon
+    // this is why we populate the search with the pokemon's name
     fetch("http://pokeapi.salestock.net/api/v2/pokemon/" + pokemon + "/")
     .then(resp => resp.json())
     .then(function (data) {
-      //change the header to the Pokemon chosen
+      //change the header
       document.querySelector('body h2').innerHTML = "Pokemon Database";
       let value = <HTMLInputElement>document.getElementById('searchField')
       value.value = data.name;
@@ -216,9 +241,11 @@ export class AppComponent {
       let p4 = document.createElement('p');
       let type = document.createElement('h4');
 
+      // create a div to hold all the information
       let details = document.createElement('div');
       details.className = 'details jumbotron';
 
+      // create a string of HTML to populate our info div
       let detailsHTML = '';
       detailsHTML += "<h2 class='d_header'>Details</h2>";
       detailsHTML += "<br>";
@@ -229,6 +256,9 @@ export class AppComponent {
       detailsHTML += " Speed: " + data.stats[0].base_stat + "</p>";
       details.innerHTML = detailsHTML;
 
+      // create div's for our images
+      // there will be four images this time
+      // they will be different sizes than previous page
       let div2 = document.createElement('div');
       div2.setAttribute('class', 'sml_img_div');
       let div3 = document.createElement('div');
@@ -238,6 +268,8 @@ export class AppComponent {
       let div5 = document.createElement('div');
       div5.setAttribute('class', 'sml_img_div');
 
+      // give those image classes
+      // also give the labels classes
       img.setAttribute('class', 'sml_image');
       img2.setAttribute('class', 'sml_image');
       img3.setAttribute('class', 'sml_image');
@@ -293,6 +325,7 @@ export class AppComponent {
       div.appendChild(details);
       })
       .catch(function(error) {
+        // error message that will clear everything if it finds errors
         console.log(error);
         window.alert('Pokemon does not exist.\nTry again.');
         document.getElementById('titleName').innerHTML = "";
