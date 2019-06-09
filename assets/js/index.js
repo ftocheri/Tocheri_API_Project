@@ -23,7 +23,7 @@ document.getElementById('searchBtn').addEventListener('click', function (e) {
     let userSearch = document.getElementById('searchField').value;
     ul.innerHTML = "";
     document.querySelector('body h2').innerHTML = "Loading..."
-    fetch("http://pokeapi.salestock.net/api/v2/pokemon/" + userSearch + "/")
+    fetch("https://pokeapi.salestock.net/api/v2/pokemon/" + userSearch + "/")
         .then(resp => resp.json())
         .then(function (data) {
             //change the header to the Pokemon chosen
